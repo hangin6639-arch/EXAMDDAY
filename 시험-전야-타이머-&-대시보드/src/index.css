@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:wght@400;600;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brutal-black: #000000;
+  --color-brutal-white: #FFFFFF;
+  --color-paper: #FFFFFF;
+  --color-riso-red: #FF4D4D;
+  --color-riso-blue: #2E5BFF;
+  --color-riso-yellow: #FFD23F;
+  --color-riso-teal: #33CA7F;
+  
+  --shadow-brutal: 4px 4px 0px 0px rgba(0,0,0,1);
+  --shadow-brutal-sm: 2px 2px 0px 0px rgba(0,0,0,1);
+  --shadow-brutal-lg: 8px 8px 0px 0px rgba(0,0,0,1);
+  
+  --font-serif: "Playfair Display", serif;
+}
+
+@layer utilities {
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  .writing-vertical-inverted {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+}
+
+:root {
+  background-color: var(--color-paper);
+  color: var(--color-brutal-black);
+  font-family: var(--font-mono);
+}
+
+/* Paper Grain Texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Neo-brutalist Component Overrides */
+.toss-card {
+  background-color: var(--color-brutal-white);
+  border: 3px solid var(--color-brutal-black);
+  border-radius: 0px;
+  box-shadow: var(--shadow-brutal);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.toss-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+}
+
+.toss-button {
+  background-color: var(--color-riso-blue);
+  color: white;
+  border: 3px solid var(--color-brutal-black);
+  border-radius: 0px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-brutal-sm);
+  transition: all 0.1s ease;
+}
+
+.toss-button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+
+.toss-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,1) !important;
+}
+
+.toss-input {
+  background-color: var(--color-brutal-white);
+  border: 3px solid var(--color-brutal-black);
+  border-radius: 0px;
+  padding: 1rem;
+  font-family: var(--font-mono);
+}
+
+.toss-input:focus {
+  outline: none;
+  background-color: #fffdf5;
+  box-shadow: inset 2px 2px 0px 0px rgba(0,0,0,0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brutal-black);
+  border: 4px solid var(--color-paper);
+}
+
+/* RISO Utility Classes */
+.bg-riso-red { background-color: var(--color-riso-red); }
+.bg-riso-blue { background-color: var(--color-riso-blue); }
+.bg-riso-yellow { background-color: var(--color-riso-yellow); }
+.bg-riso-teal { background-color: var(--color-riso-teal); }
+
+.text-riso-red { color: var(--color-riso-red); }
+.text-riso-blue { color: var(--color-riso-blue); }
